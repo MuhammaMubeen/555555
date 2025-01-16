@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    .formal{
+    margin-top: 5%;
+    justify-content: center;
+    justify-items: center;
+}
+@media (min-width: 851px) {
+ 
+    body {
+font-family: 'Poppins', Arial, sans-serif;
+ background-color: #10122d;
+color: #fff;
+  line-height: 1.6;
+ overflow-x: hidden;
+}
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A1A3E;
+    padding: 10px 20px;
+    height: 60px;
+}
+
+/* Logo section */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Navbar links */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0 15px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-links li .plus-icon {
+    color: #00BFFF;
+    margin-left: 5px;
+}
+
+.nav-links li:hover {
+    color: #00BFFF;
+}
+
+/* Logout button */
+.logout-btn {
+    text-decoration: none;
+    background-color: #FF6347;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #e5533d;
+}
+
+.nav{
+display: none;
+}
+}
+
+
+@media (max-width: 851px) {
+    /* Navbar styles */
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background-color: #10122d;
+        color: #fff;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    .navbar1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #2B2B50;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        display: flex;
+        font-size: 25px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .logo {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .menu-toggle {
+        font-size: 30px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+        width: 240px;
+        background-color: #1A1A3E;
+        height: 100vh;
+        padding: 20px;
+        position: fixed;
+        left: -280px; /* Fully hidden off-screen */
+        top: 0;
+        transition: left 0.3s ease; /* Smooth slide-in effect */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .sidebar.active {
+        left: 0; /* Slide into view */
+    }
+
+    .menu {
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu li {
+        padding: 10px 0;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        border-bottom: 1px solid #333;
+    }
+
+    .menu li span {
+        color: #00BFFF;
+    }
+
+    .footer {
+        margin-top: 20px;
+    }
+
+    .logout {
+        text-decoration: none;
+        background-color: #FF6347;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .language-select {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .language-select img {
+        width: 20px;
+        margin-right: 5px;
+    }
+
+    .language-select span {
+        margin-left: 5px;
+    }
+
+    /* Add hover effect */
+    .menu li:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    /* Close button inside sidebar */
+    .close-btn {
+        font-size: 24px;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .nav2 {
+        display: none;
+    }
+
+    /* Overlay styles */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        z-index: 999; /* Below the sidebar but above other content */
+        display: none;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+}
+
+</style>
+<body>
+    <div class="nav">
+        <div class="navbar1">
+           
+            <div class="logo"> 
+                <img src="favicon.png" alt="Logo" class="logo">Lotto</div>
+            <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+            <ul class="menu">
+                <li>Dashboard</li></a>
+                <li>Hot Offer <span class="plus-icon">+</span></li></a>
+                <li>Lotteries <span class="plus-icon">+</span></li></a>
+                <li>Deposit <span class="plus-icon">+</span></li></a>
+                <li>Withdraw <span class="plus-icon">+</span></a></li></a>
+                <li>Payment Proof <span class="plus-icon">+</span></li></a>
+                </ul>
+            <div class="footer">
+                <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+            </div>
+        </div>
+        <script>
+            const toggleMenu = document.getElementById('toggleMenu');
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+    
+            // Open the sidebar when the menu toggle is clicked
+            toggleMenu.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+    
+            // Close the sidebar when the close button is clicked
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        </script>
+    </div>
+    
+    <div class="nav2">
+    <div class="navbar">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="favicon.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <span class="logo-text">Lotto</span>
+        </div>
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li>Dashboard</li></a>
+            <li>Lotteries <span class="plus-icon">+</span></li></a>
+            <li>Deposit <span class="plus-icon">+</span></li></a>
+            <li>Withdraw <span class="plus-icon">+</span></a></li></a>
+            <li>Payment Proof <span class="plus-icon">+</span></li></a>
+            </ul>
+        <!-- Logout button -->
+        <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+            </div>
+    </div>
+    
+
+<div class="formal">
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- Logo Section -->
+            
+            <h2>Login</h2>
+            <form id="login-form" action="Dashboard.html" method="post">  <!-- Changed action to index.html -->
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                    <br><br>
+                    
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <p>
+                        <input type="checkbox" id="terms-checkbox" required>
+                        By Login account, I agree to <a href="#" class="terms-link">Terms and Conditions</a>
+                    </p>
+                    
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p>Don't have an account? <a href="register.html">Signup</a></p>
+            <a href="#" class="help-link">Need help?</a>
+        </div>
+    </div>
+</div>
+    <style>
+       body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0a0d29;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.auth-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+}
+
+.auth-box h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #00d9ff;
+    margin: 5px auto;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    max-width: 120px;
+    height: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #8a2be2;
+    outline: none;
+}
+
+.btn {
+    margin-left: 15%;
+    width: 70%;
+    padding: 10px;
+    background: #00d9ff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+p {
+    text-align: center;
+    color: #555;
+}
+
+p input[type="checkbox"] {
+    width: 16px;
+   height: 16px;
+}
+
+
+a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+ 
+p {
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  a {
+    color:  #000000; 
+       text-decoration: underline;
+  }
+  .button   a {
+    color:  #000000;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #8a2be2;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+  .terms-link {
+    font-weight: bold;
+  }
+  
+  .help-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+    width: 70%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+    .auth-container {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        width: 60px;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .logo {
+        width: 50px;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+
+    <SCript>document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = document.getElementById("login-form");
+        const registerForm = document.getElementById("register-form");
+    
+        // Handle login submission
+        if (loginForm) {
+            loginForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Login successful!");
+                window.location.href = "dashboard.html";
+            });
+        }
+    
+        // Handle registration submission
+        if (registerForm) {
+            registerForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Registration successful!");
+                window.location.href = "dashboard.html";
+            });
+        }
+    });
+    </SCript>
+</body>
+</html>
